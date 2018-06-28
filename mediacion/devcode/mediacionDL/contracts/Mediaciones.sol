@@ -9,7 +9,8 @@ contract Mediaciones {
     enum TiposDocumentos { Invitacion, ReglasConduccion, LibreVoluntadInvitado, LibreVoluntadSolicitante, ConvenioConfidencialidad, 
     AceptacionServicioMediacion, EscritoAutonomia, TarjetaInformativa, EtapasMediacion, ConstruccionSoluciones, ConvenioMediacion }
     struct Documento {
-        TiposDocumentos tipoDocumento;   // nombre del documento
+        //TiposDocumentos tipoDocumento;   // nombre del documento
+        bytes32 descripcion;
         bytes32 ipfsHash; // hash del documento almacenado en IPFS
     }
 
@@ -41,12 +42,13 @@ contract Mediaciones {
     event SeCreoNuevoDocumento(address mediador, uint256 idMediacion, bytes32 tipoDocto);
     event SeCreoNuevoParticipante(address mediador, uint256 idMediacion, bytes32 participante);
 
-    function creaNuevaMediacion(bytes32 ipfsHash, address oficinaCJA) public returns (uint256)
+    function creaNuevaMediacion(bytes32 descripcion, bytes32 ipfsHash, address oficinaCJA) public returns (uint256)
     {
         mediador = msg.sender;
         cja = oficinaCJA;
 
-        Documento memory documento = Documento ({tipoDocumento: TiposDocumentos.ReglasConduccion, ipfsHash: ipfsHash});
+        //Documento memory documento = Documento ({tipoDocumento: TiposDocumentos.ReglasConduccion, ipfsHash: ipfsHash});
+        Documento memory documento = Documento ({descripcion: descripcion, ipfsHash: ipfsHash});
         Participante memory participante = Participante ({rol: Roles.Solicitante, identificacion: TiposIdentificacionOficial.INE});
 
         mediacion.mediacionId = mediaciones[mediador].length + 1;
@@ -57,7 +59,7 @@ contract Mediaciones {
         
         mediaciones[mediador].push(mediacion);
 
-        emit SeCreoNuevaMediacion(msg.sender, mediaciones[mediador].length, "Reglas Conducción", "Solicitante");
+        emit SeCreoNuevaMediacion(msg.sender, mediaciones[mediador].length, descripcion, "Solicitante");
 
         return mediaciones[mediador].length;
     }
@@ -72,11 +74,14 @@ contract Mediaciones {
         emit SeCreoNuevoParticipante(msg.sender, idMediacion, "Invitado");
     }
 
-    function agregaDocumento(uint32 idMediacion, uint tipoDocto, bytes32 ipfsHash) public 
+    //function agregaDocumento(uint32 idMediacion, uint tipoDocto, bytes32 ipfsHash) public
+    function agregaDocumento(uint32 idMediacion, bytes32 descripcion, bytes32 ipfsHash) public
     {
         require(msg.sender != mediador || msg.sender != cja, "Operación inválida.");
 
-        bytes32 doctoType;
+        mediaciones[msg.sender][idMediacion].documentos.push(Documento({descripcion: descripcion, ipfsHash: ipfsHash}));
+
+        /*bytes32 doctoType;
 
         if (tipoDocto == 1) {
             mediaciones[msg.sender][idMediacion].documentos.push(Documento({tipoDocumento: TiposDocumentos.Invitacion, ipfsHash: ipfsHash}));
@@ -122,7 +127,8 @@ contract Mediaciones {
             mediaciones[msg.sender][idMediacion].documentos.push(Documento({tipoDocumento: TiposDocumentos.ConvenioMediacion, ipfsHash: ipfsHash}));
             doctoType = "Convenio Mediación";
         }
+        */
 
-        emit SeCreoNuevoDocumento(msg.sender, idMediacion, doctoType);
+        emit SeCreoNuevoDocumento(msg.sender, idMediacion, descripcion);
     }
 }

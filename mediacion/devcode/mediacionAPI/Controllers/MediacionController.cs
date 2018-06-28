@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Threading;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json.Linq;
 using Nethereum.Hex.HexTypes;
 using Nethereum.Web3;
 using Nethereum.Geth;
@@ -39,38 +40,72 @@ namespace mediacionAPI.Controllers
         //Crea Token de Mediación
         [HttpPost]
         //public async IEnumerable<string> Post()
-        public async Task<IActionResult> Post()
+        public async Task<IActionResult> Post([FromBody]JArray documentos)
         {
-            await VerificaExistenciaSmartContract();
-            var contract = geth.Eth.GetContract(abi, contractAddress);
+            try 
+            {
+                foreach (JObject item in documentos)
+                {
+                    string descripcion = item.GetValue("descripcion").ToString();
+                    string ipfsHash = item.GetValue("ipfsHash").ToString();
+                }
+                await VerificaExistenciaSmartContract();
+                var contract = geth.Eth.GetContract(abi, contractAddress);
 
-            var creaNuevaMediacionFunction = contract.GetFunction("creaNuevaMediacion");
-            var mediacionStruct = contract.GetFunction("mediaciones");
-            var seCreoNuevaMediacionEvent = contract.GetEvent("SeCreoNuevaMediacion");
-            //var mediaciones = contract.GetFunction("mediaciones");
+                var creaNuevaMediacionFunction = contract.GetFunction("creaNuevaMediacion");
+                var mediacionStruct = contract.GetFunction("mediaciones");
+                var seCreoNuevaMediacionEvent = contract.GetEvent("SeCreoNuevaMediacion");
+                //var mediaciones = contract.GetFunction("mediaciones");
 
-            var transactionHash = await creaNuevaMediacionFunction.SendTransactionAsync(mediadorAddress, new HexBigInteger(900000), null, "123qwe456asd", cjaAddress);
+                var transactionHash = await creaNuevaMediacionFunction.SendTransactionAsync(mediadorAddress, new HexBigInteger(900000), null, "123qwe456asd", cjaAddress);
 
-            var receipt = await geth.Eth.Transactions.GetTransactionReceipt.SendRequestAsync(transactionHash);
-            while (receipt == null){
-                Thread.Sleep(5000);
-                receipt = await geth.Eth.Transactions.GetTransactionReceipt.SendRequestAsync(transactionHash);
+                var receipt = await geth.Eth.Transactions.GetTransactionReceipt.SendRequestAsync(transactionHash);
+                while (receipt == null){
+                    Thread.Sleep(5000);
+                    receipt = await geth.Eth.Transactions.GetTransactionReceipt.SendRequestAsync(transactionHash);
+                }
+
+                var result0 = await mediacionStruct.CallDeserializingToObjectAsync<Mediacion>(mediadorAddress, 0);
+                var result1 = await mediacionStruct.CallDeserializingToObjectAsync<Mediacion>(mediadorAddress, 1);
+                var filterEvents = await seCreoNuevaMediacionEvent.CreateFilterAsync();
+                var logEvents = await seCreoNuevaMediacionEvent.GetFilterChanges<SeCreoNuevaMediacionEvent>(filterEvents);
+            }
+            catch (Exception chingadamadre)
+            {
+                Console.WriteLine("Message: " + chingadamadre.Message);
+                Console.WriteLine("InnerException: " + chingadamadre.InnerException);
+                Console.WriteLine("Source: " + chingadamadre.Source);
+                return BadRequest(error: chingadamadre.Message);  //400
             }
 
-            var result0 = await mediacionStruct.CallDeserializingToObjectAsync<Mediacion>(mediadorAddress, 0);
-            var result1 = await mediacionStruct.CallDeserializingToObjectAsync<Mediacion>(mediadorAddress, 1);
-            var filterEvents = await seCreoNuevaMediacionEvent.CreateFilterAsync();
-            var logEvents = await seCreoNuevaMediacionEvent.GetFilterChanges<SeCreoNuevaMediacionEvent>(filterEvents);
-
             //return "Ready";
-            return Ok(new string[] { "value1", "value2" });
+            //return Ok(new string[] { "value1", "value2" });
+            return Ok("Se ha creado una nueva Mediación");
         }
 
         //Actualiza Token de Mediciación
         [HttpPut]
-        public IEnumerable<string> Put()
+        public async Task<IActionResult> Put(int idMediacion, [FromBody]JArray documentos)
         {
-            return new string[] { "value1", "value2" };
+            try
+            {
+                foreach (JObject item in documentos)
+                {
+                    string descripcion = item.GetValue("descripcion").ToString();
+                    string ipfsHash = item.GetValue("ipfsHash").ToString();
+                }
+                await VerificaExistenciaSmartContract();
+            }
+            catch (Exception chingadamadre)
+            {
+                Console.WriteLine("Message: " + chingadamadre.Message);
+                Console.WriteLine("InnerException: " + chingadamadre.InnerException);
+                Console.WriteLine("Source: " + chingadamadre.Source);
+                return BadRequest(error: chingadamadre.Message);  //400
+            }
+
+            //return new string[] { "value1", "value2" };
+            return Ok("Se han agregados nuevos documentos a la Mediación" + idMediacion.ToString());
         }
 
         private async Task VerificaExistenciaSmartContract() 

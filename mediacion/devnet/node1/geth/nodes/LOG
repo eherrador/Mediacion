@@ -53,3 +53,15 @@
 21:22:50.173375 table@compaction committed F-1 S-95KiB Ke·0 D·12176 T·8.814371ms
 21:22:50.173665 table@remove removed @9
 21:22:50.173914 table@remove removed @8
+=============== Jun 28, 2018 (CDT) ===============
+10:21:35.276989 log@legend F·NumFile S·FileSize N·Entry C·BadEntry B·BadBlock Ke·KeyError D·DroppedEntry L·Level Q·SeqNum T·TimeElapsed
+10:21:35.279290 version@stat F·[0 1] S·623B[0B 623B] Sc·[0.00 0.00]
+10:21:35.279429 db@open opening
+10:21:35.279753 journal@recovery F·1
+10:21:35.284975 journal@recovery recovering @10
+10:21:35.331074 memdb@flush created L0@13 N·15089 S·117KiB "n:+..ail,v23000":"n:\xae..ing,v23008"
+10:21:35.334070 version@stat F·[1 1] S·117KiB[117KiB 623B] Sc·[0.25 0.00]
+10:21:35.336508 db@janitor F·4 G·0
+10:21:35.336559 db@open done T·57.046819ms
+11:16:27.964044 db@close closing
+11:16:27.965391 db@close done T·1.345119ms
