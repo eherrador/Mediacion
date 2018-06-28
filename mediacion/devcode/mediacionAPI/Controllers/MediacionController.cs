@@ -40,7 +40,7 @@ namespace mediacionAPI.Controllers
         //Crea Token de Mediación
         [HttpPost]
         //public async IEnumerable<string> Post()
-        public async Task<IActionResult> Post([FromBody]JArray documentos)
+        public async Task<IActionResult> Post(int idMediacion, [FromBody]JArray documentos)
         {
             try 
             {
@@ -105,7 +105,7 @@ namespace mediacionAPI.Controllers
             }
 
             //return new string[] { "value1", "value2" };
-            return Ok("Se han agregados nuevos documentos a la Mediación" + idMediacion.ToString());
+            return Ok("Se han agregados nuevos documentos a la Mediación " + idMediacion.ToString());
         }
 
         private async Task VerificaExistenciaSmartContract() 
