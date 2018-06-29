@@ -42,7 +42,7 @@ contract Mediaciones {
     event SeCreoNuevoDocumento(address mediador, uint256 idMediacion, bytes32 tipoDocto);
     event SeCreoNuevoParticipante(address mediador, uint256 idMediacion, bytes32 participante);
 
-    function creaNuevaMediacion(bytes32 descripcion, bytes32 ipfsHash, address oficinaCJA) public returns (uint256)
+    function creaNuevaMediacion(bytes32 descripcion, uint32 idMediacion, bytes32 ipfsHash, address oficinaCJA) public returns (uint256)
     {
         mediador = msg.sender;
         cja = oficinaCJA;
@@ -51,11 +51,11 @@ contract Mediaciones {
         Documento memory documento = Documento ({descripcion: descripcion, ipfsHash: ipfsHash});
         Participante memory participante = Participante ({rol: Roles.Solicitante, identificacion: TiposIdentificacionOficial.INE});
 
-        mediacion.mediacionId = mediaciones[mediador].length + 1;
+        mediacion.mediacionId = idMediacion; //mediaciones[mediador].length + 1;
         mediacion.documentos.push(documento);
         mediacion.participantes.push(participante);
         mediacion.terminada = false;
-        mediacion.nota = "";
+        mediacion.nota = "Esta es la nota asociada a la mediación.";
         
         mediaciones[mediador].push(mediacion);
 
