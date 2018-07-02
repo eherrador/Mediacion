@@ -52,3 +52,23 @@
 10:20:56.838843 table@remove removed @8
 10:20:56.839030 table@remove removed @5
 10:20:56.839213 table@remove removed @2
+=============== Jun 29, 2018 (CDT) ===============
+17:31:06.959848 log@legend F·NumFile S·FileSize N·Entry C·BadEntry B·BadBlock Ke·KeyError D·DroppedEntry L·Level Q·SeqNum T·TimeElapsed
+17:31:06.961646 version@stat F·[0 1] S·50KiB[0B 50KiB] Sc·[0.00 0.00]
+17:31:06.961691 db@open opening
+17:31:06.961805 journal@recovery F·1
+17:31:06.963999 journal@recovery recovering @12
+17:31:06.965668 memdb@flush created L0@15 N·1 S·357B "eth..\u007f?\xcb,v632":"eth..\u007f?\xcb,v632"
+17:31:06.968697 version@stat F·[1 1] S·50KiB[357B 50KiB] Sc·[0.25 0.00]
+17:31:06.970988 db@janitor F·4 G·0
+17:31:06.971033 db@open done T·9.318816ms
+=============== Jun 29, 2018 (CDT) ===============
+18:29:04.712675 log@legend F·NumFile S·FileSize N·Entry C·BadEntry B·BadBlock Ke·KeyError D·DroppedEntry L·Level Q·SeqNum T·TimeElapsed
+18:29:04.714515 version@stat F·[1 1] S·50KiB[357B 50KiB] Sc·[0.25 0.00]
+18:29:04.714557 db@open opening
+18:29:04.714632 journal@recovery F·1
+18:29:04.715134 journal@recovery recovering @16
+18:29:04.718389 memdb@flush created L0@18 N·1 S·357B "eth..\u007f?\xcb,v634":"eth..\u007f?\xcb,v634"
+18:29:04.718870 version@stat F·[2 1] S·51KiB[714B 50KiB] Sc·[0.50 0.00]
+18:29:04.722244 db@janitor F·5 G·0
+18:29:04.722291 db@open done T·7.720396ms

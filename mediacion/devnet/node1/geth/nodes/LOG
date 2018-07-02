@@ -65,3 +65,39 @@
 10:21:35.336559 db@open done T·57.046819ms
 11:16:27.964044 db@close closing
 11:16:27.965391 db@close done T·1.345119ms
+=============== Jun 29, 2018 (CDT) ===============
+17:31:35.714286 log@legend F·NumFile S·FileSize N·Entry C·BadEntry B·BadBlock Ke·KeyError D·DroppedEntry L·Level Q·SeqNum T·TimeElapsed
+17:31:35.722780 version@stat F·[1 1] S·117KiB[117KiB 623B] Sc·[0.25 0.00]
+17:31:35.722871 db@open opening
+17:31:35.723093 journal@recovery F·1
+17:31:35.728036 journal@recovery recovering @14
+17:31:35.759957 memdb@flush created L0@16 N·8728 S·68KiB "n:\x01..ver,v46750":"n:\xae..ing,v38080"
+17:31:35.762717 version@stat F·[2 1] S·186KiB[185KiB 623B] Sc·[0.50 0.00]
+17:31:35.770153 db@janitor F·5 G·0
+17:31:35.770203 db@open done T·47.3031ms
+17:31:35.794964 table@compaction L0·2 -> L1·1 S·186KiB Q·46806
+17:31:35.808290 table@build created L1@19 N·19 S·741B "n:\x01..ver,v46750":"version,v1"
+17:31:35.808390 version@stat F·[0 1] S·741B[0B 741B] Sc·[0.00 0.00]
+17:31:35.808679 table@compaction committed F-2 S-185KiB Ke·0 D·23813 T·13.640245ms
+17:31:35.833367 table@remove removed @16
+17:31:35.833585 table@remove removed @13
+17:31:35.834694 table@remove removed @12
+=============== Jun 29, 2018 (CDT) ===============
+18:29:27.739434 log@legend F·NumFile S·FileSize N·Entry C·BadEntry B·BadBlock Ke·KeyError D·DroppedEntry L·Level Q·SeqNum T·TimeElapsed
+18:29:27.742421 version@stat F·[0 1] S·741B[0B 741B] Sc·[0.00 0.00]
+18:29:27.742508 db@open opening
+18:29:27.742680 journal@recovery F·1
+18:29:27.751664 journal@recovery recovering @17
+18:29:27.777545 memdb@flush created L0@20 N·7013 S·55KiB "n:\x01..ver,v53665":"n:\xae..ing,v46808"
+18:29:27.780970 version@stat F·[1 1] S·56KiB[55KiB 741B] Sc·[0.25 0.00]
+18:29:27.786175 db@janitor F·4 G·0
+18:29:27.786226 db@open done T·43.683889ms
+18:30:00.327476 table@compaction L0·1 -> L1·1 S·56KiB Q·53925
+18:30:00.337931 table@build created L1@23 N·23 S·855B "n:\x01..ver,v53665":"version,v1"
+18:30:00.338455 version@stat F·[0 1] S·855B[0B 855B] Sc·[0.00 0.00]
+18:30:00.339453 table@compaction committed F-1 S-55KiB Ke·0 D·7009 T·11.162902ms
+18:30:00.339727 table@remove removed @20
+18:30:00.339915 table@remove removed @19
+=============== Jul 2, 2018 (CDT) ===============
+11:55:17.336462 db@close closing
+11:55:17.337975 db@close done T·1.511061ms
