@@ -101,3 +101,13 @@
 23:27:21.570156 table@remove removed @18
 23:27:21.570498 table@remove removed @15
 23:27:21.571823 table@remove removed @14
+=============== Jul 3, 2018 (CDT) ===============
+11:40:34.824125 log@legend F·NumFile S·FileSize N·Entry C·BadEntry B·BadBlock Ke·KeyError D·DroppedEntry L·Level Q·SeqNum T·TimeElapsed
+11:40:34.826025 version@stat F·[0 1] S·50KiB[0B 50KiB] Sc·[0.00 0.00]
+11:40:34.826072 db@open opening
+11:40:34.826175 journal@recovery F·1
+11:40:34.826815 journal@recovery recovering @25
+11:40:34.829862 memdb@flush created L0@28 N·1 S·357B "eth..\u007f?\xcb,v640":"eth..\u007f?\xcb,v640"
+11:40:34.830323 version@stat F·[1 1] S·50KiB[357B 50KiB] Sc·[0.25 0.00]
+11:40:34.833954 db@janitor F·4 G·0
+11:40:34.834032 db@open done T·7.936309ms

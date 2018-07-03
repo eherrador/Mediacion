@@ -130,3 +130,30 @@
 23:28:21.725999 table@remove removed @27
 23:28:21.727399 table@remove removed @24
 23:28:21.727743 table@remove removed @23
+=============== Jul 3, 2018 (CDT) ===============
+11:41:16.382979 log@legend F·NumFile S·FileSize N·Entry C·BadEntry B·BadBlock Ke·KeyError D·DroppedEntry L·Level Q·SeqNum T·TimeElapsed
+11:41:16.385231 version@stat F·[0 1] S·799B[0B 799B] Sc·[0.00 0.00]
+11:41:16.385298 db@open opening
+11:41:16.385471 journal@recovery F·1
+11:41:16.391615 journal@recovery recovering @28
+11:41:16.438077 memdb@flush created L0@31 N·12922 S·101KiB "n:+..ail,v110980":"n:\xaa..ing,v110996"
+11:41:16.441980 version@stat F·[1 1] S·102KiB[101KiB 799B] Sc·[0.25 0.00]
+11:41:16.449854 db@janitor F·4 G·0
+11:41:16.449903 db@open done T·64.576368ms
+=============== Jul 3, 2018 (CDT) ===============
+11:41:32.068805 log@legend F·NumFile S·FileSize N·Entry C·BadEntry B·BadBlock Ke·KeyError D·DroppedEntry L·Level Q·SeqNum T·TimeElapsed
+11:41:32.069370 version@stat F·[1 1] S·102KiB[101KiB 799B] Sc·[0.25 0.00]
+11:41:32.069471 db@open opening
+11:41:32.069703 journal@recovery F·1
+11:41:32.076495 journal@recovery recovering @32
+11:41:32.078295 memdb@flush created L0@34 N·4 S·482B "n:+..ing,v123884":"n:\xaa..ail,v123887"
+11:41:32.083753 version@stat F·[2 1] S·103KiB[102KiB 799B] Sc·[0.50 0.00]
+11:41:32.086097 db@janitor F·5 G·0
+11:41:32.086150 db@open done T·16.630246ms
+11:41:32.091261 table@compaction L0·2 -> L1·1 S·103KiB Q·123888
+11:41:32.108494 table@build created L1@37 N·21 S·914B "n:(..ing,v65825":"version,v1"
+11:41:32.108663 version@stat F·[0 1] S·914B[0B 914B] Sc·[0.00 0.00]
+11:41:32.110123 table@compaction committed F-2 S-102KiB Ke·0 D·12922 T·18.779084ms
+11:41:32.111834 table@remove removed @34
+11:41:32.112491 table@remove removed @31
+11:41:32.112874 table@remove removed @30
