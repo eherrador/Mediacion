@@ -28,7 +28,7 @@ contract Mediaciones {
     }
 
     struct Mediacion {
-        uint256 mediacionId;
+        uint32 mediacionId;
         Documento[] documentos;
         Participante[] participantes;
         bool terminada;
@@ -38,14 +38,15 @@ contract Mediaciones {
     Mediacion mediacion;
     mapping(address => Mediacion[]) public mediaciones;
 
-    event SeCreoNuevaMediacion(address mediador, uint256 idMediacion, bytes32 tipoDocto, bytes32 participante);
+    event SeCreoNuevaMediacion(address indexed mediador, uint32 indexed idMediacion, bytes32 indexed tipoDocto, bytes32 participante);
     event SeCreoNuevoDocumento(address mediador, uint256 idMediacion, bytes32 tipoDocto);
     event SeCreoNuevoParticipante(address mediador, uint256 idMediacion, bytes32 participante);
 
-    function creaNuevaMediacion(bytes32 descripcion, uint32 idMediacion, bytes32 ipfsHash, address oficinaCJA) public returns (uint256)
+    //function creaNuevaMediacion(bytes32 descripcion, uint32 idMediacion, bytes32 ipfsHash, address oficinaCJA) public returns (uint256)
+    function creaNuevaMediacion(bytes32 descripcion, uint32 idMediacion, bytes32 ipfsHash) public returns (bool)
     {
         mediador = msg.sender;
-        cja = oficinaCJA;
+        //cja = oficinaCJA;
 
         //Documento memory documento = Documento ({tipoDocumento: TiposDocumentos.ReglasConduccion, ipfsHash: ipfsHash});
         Documento memory documento = Documento ({descripcion: descripcion, ipfsHash: ipfsHash});
@@ -59,9 +60,9 @@ contract Mediaciones {
         
         mediaciones[mediador].push(mediacion);
 
-        emit SeCreoNuevaMediacion(msg.sender, mediaciones[mediador].length, descripcion, "Solicitante");
+        emit SeCreoNuevaMediacion(msg.sender, idMediacion, descripcion, "Solicitante");
 
-        return mediaciones[mediador].length;
+        return true; //mediaciones[mediador].length;
     }
 
     function agregaInvitado(uint32 idMediacion) public

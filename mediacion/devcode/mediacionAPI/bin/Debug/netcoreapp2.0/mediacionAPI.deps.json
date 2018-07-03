@@ -30,7 +30,8 @@
           "Nethereum.Hex": "2.5.1",
           "Nethereum.JsonRpc.Client": "2.5.1",
           "Nethereum.Web3": "2.5.1",
-          "Newtonsoft.Json": "11.0.2"
+          "Newtonsoft.Json": "11.0.2",
+          "System.Runtime.Numerics": "4.3.0"
         },
         "runtime": {
           "mediacionAPI.dll": {}

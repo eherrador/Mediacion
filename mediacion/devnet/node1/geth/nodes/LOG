@@ -101,3 +101,37 @@
 =============== Jul 2, 2018 (CDT) ===============
 11:55:17.336462 db@close closing
 11:55:17.337975 db@close done T·1.511061ms
+=============== Jul 2, 2018 (CDT) ===============
+12:37:27.311688 log@legend F·NumFile S·FileSize N·Entry C·BadEntry B·BadBlock Ke·KeyError D·DroppedEntry L·Level Q·SeqNum T·TimeElapsed
+12:37:27.313377 version@stat F·[0 1] S·855B[0B 855B] Sc·[0.00 0.00]
+12:37:27.313429 db@open opening
+12:37:27.313536 journal@recovery F·1
+12:37:27.316879 journal@recovery recovering @21
+12:37:27.403584 memdb@flush created L0@24 N·24304 S·190KiB "n:\x01..ver,d66311":"n:\xae..ong,d66332"
+12:37:27.407291 version@stat F·[1 1] S·190KiB[190KiB 855B] Sc·[0.25 0.00]
+12:37:27.411800 db@janitor F·4 G·0
+12:37:27.411864 db@open done T·98.406627ms
+17:05:19.913434 table@compaction L0·1 -> L1·1 S·190KiB Q·110707
+17:05:19.925402 table@build created L1@27 N·12 S·604B "n:(..ing,v66325":"version,v1"
+17:05:19.925505 version@stat F·[0 1] S·604B[0B 604B] Sc·[0.00 0.00]
+17:05:19.926812 table@compaction committed F-1 S-190KiB Ke·0 D·24315 T·10.741398ms
+17:05:19.928170 table@remove removed @24
+17:05:19.929408 table@remove removed @23
+17:27:06.154865 db@close closing
+17:27:06.155432 db@close done T·563.52µs
+=============== Jul 2, 2018 (CDT) ===============
+23:27:44.139636 log@legend F·NumFile S·FileSize N·Entry C·BadEntry B·BadBlock Ke·KeyError D·DroppedEntry L·Level Q·SeqNum T·TimeElapsed
+23:27:44.141106 version@stat F·[0 1] S·604B[0B 604B] Sc·[0.00 0.00]
+23:27:44.141169 db@open opening
+23:27:44.141297 journal@recovery F·1
+23:27:44.144249 journal@recovery recovering @25
+23:27:44.286868 memdb@flush created L0@28 N·33580 S·262KiB "n:+..ail,v78131":"n:\xaa..ong,v78165"
+23:27:44.290632 version@stat F·[1 1] S·262KiB[262KiB 604B] Sc·[0.25 0.00]
+23:27:44.298174 db@janitor F·4 G·0
+23:27:44.298269 db@open done T·157.030147ms
+23:27:44.310512 table@compaction L0·1 -> L1·1 S·262KiB Q·111706
+23:27:44.330661 table@build created L1@31 N·16 S·709B "n:(..ing,v66325":"version,v1"
+23:27:44.330817 version@stat F·[0 1] S·709B[0B 709B] Sc·[0.00 0.00]
+23:27:44.331269 table@compaction committed F-1 S-262KiB Ke·0 D·33576 T·20.649032ms
+23:27:44.331825 table@remove removed @28
+23:27:44.332253 table@remove removed @27
