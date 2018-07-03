@@ -43,10 +43,10 @@ contract Mediaciones {
     event SeCreoNuevoParticipante(address mediador, uint256 idMediacion, bytes32 participante);
 
     //function creaNuevaMediacion(bytes32 descripcion, uint32 idMediacion, bytes32 ipfsHash, address oficinaCJA) public returns (uint256)
-    function creaNuevaMediacion(bytes32 descripcion, uint32 idMediacion, bytes32 ipfsHash) public returns (bool)
+    function creaNuevaMediacion(bytes32 descripcion, uint32 idMediacion, bytes32 ipfsHash, address oficinaCJA) public returns (bool)
     {
         mediador = msg.sender;
-        //cja = oficinaCJA;
+        cja = oficinaCJA;
 
         //Documento memory documento = Documento ({tipoDocumento: TiposDocumentos.ReglasConduccion, ipfsHash: ipfsHash});
         Documento memory documento = Documento ({descripcion: descripcion, ipfsHash: ipfsHash});
@@ -76,7 +76,7 @@ contract Mediaciones {
     }
 
     //function agregaDocumento(uint32 idMediacion, uint tipoDocto, bytes32 ipfsHash) public
-    function agregaDocumento(uint32 idMediacion, bytes32 descripcion, bytes32 ipfsHash) public
+    function agregaDocumento(bytes32 descripcion, uint32 idMediacion, bytes32 ipfsHash) public
     {
         require(msg.sender != mediador || msg.sender != cja, "Operación inválida.");
 
